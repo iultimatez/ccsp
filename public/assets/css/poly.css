@@ -3,7 +3,7 @@ margin-right: auto;
 margin-left: auto;
 width: 300px;
 height: 165px;
-background: black;
+background: #dd4814;
 position: relative;
 text-align: center;
 vertical-align: middle;
@@ -17,7 +17,7 @@ width: 0;
 height: 0;
 border-left: 150px solid transparent;
 border-right: 150px solid transparent;
-border-bottom: 75px solid black;
+border-bottom: 75px solid #dd4814;
 }
 #hexagon:after {
 content: "";
@@ -28,5 +28,5 @@ width: 0;
 height: 0;
 border-left: 150px solid transparent;
 border-right: 150px solid transparent;
-border-top: 75px solid black;
+border-top: 75px solid #dd4814;
 } 

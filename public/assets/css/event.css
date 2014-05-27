@@ -18,5 +18,9 @@ div.aspect_col{
 	vertical-align: middle;
 	height: 100%;
 }
-.comment_input{
+.comment_list{
+	height: 100px;
+	overflow: auto;
+	word-wrap: break-word;
+	word-break: normal;
 }
