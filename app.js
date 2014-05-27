@@ -38,7 +38,7 @@ passport.use(new FacebookStrategy({
         console.log(error);
       }
       /*
-      登入之後會還傳值，前端應該用cookie之類的東西記錄，才能在新增內容的時候填入使用者的objectID
+      登入之後會回傳值，前端應該用cookie之類的東西記錄，才能在新增內容的時候填入使用者的objectID
       */
       var a = JSON.parse(body);
       //console.log(body);
@@ -95,11 +95,13 @@ app.get('/secret',
   			res.redirect('/login')
   		}
   	});
+
 //登出
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
 //傳回是否是登入狀態
 app.get('/isAuthenticated', function(req, res){
   if (req.isAuthenticated()) {
@@ -108,6 +110,7 @@ app.get('/isAuthenticated', function(req, res){
     res.end("Not login yet");
   }
 });
+
 /*
 需要驗證使用者的話，就把下面改成
 app.get('/topic/list', ensureAuthenticated, topic.list);
