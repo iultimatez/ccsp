@@ -6,19 +6,17 @@ div.aspect_col{
     border-radius: 5px;
     background-color: white;
 }
-.textbreak{
-	word-wrap: break-word;
-}
 .goast{
 	height: 165px;
 	vertical-align: middle;
 	display: inline-block;
 	color: white;
 }
-
 .goast:before{
 	content: "";
 	display: inline-block;
 	vertical-align: middle;
 	height: 100%;
+}
+.comment_input{
 }
