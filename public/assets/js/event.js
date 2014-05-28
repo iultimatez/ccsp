@@ -12,9 +12,12 @@ commentInput.on("keyup", function(e){
 			scrollTo;
 
 		$(commentTmpl).appendTo(ul).find("span").text(input.val());
+		var modal = input.parents(".aspect_comment").find(".modal-body").find(".comment_list2");
+		$(commentTmpl).appendTo(modal).find("span").text(input.val());
 		input.val("");
 		scrollTo = ul.find("li:last");
 		ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
+		
 	}
 })
 
@@ -55,9 +58,10 @@ more.on("click", function(){
 	titleInput.on("keyup", function(e){
 		if(e.which === 13){
 			var input = $(this);
-
+			var modal = input.parents(".aspect_col").find(".modal-title");
 			$(aspect).find("p").text(input.val());
 			$(aspect).removeClass("is-editing");
+			modal.text(input.val());
 		}
 	})
 })
