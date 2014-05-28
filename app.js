@@ -71,13 +71,19 @@ app.get('/login', function(req, res){
   res.sendfile('login.html');
 });
 
+
+app.get('/logintry', function(req, res){
+  res.sendfile('logintry.html');
+});
+
+
 //FB登入連結，如果不需要做登入頁面的話直接call這個連結就好
 app.get('/auth/facebook', passport.authenticate('facebook'));
 
 //FB登入call back
 app.get('/fbcb', 
-  passport.authenticate('facebook', { successRedirect: '/',
-                                      failureRedirect: '/login' }));
+  passport.authenticate('facebook', { successRedirect: '/login/success',
+                                      failureRedirect: '/login/fail' }));
 
 
 app.post('/find', user.findOne);
@@ -97,6 +103,18 @@ app.get('/secret',
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
+});
+
+//login success
+app.get('/login/success', function(req, res){
+  //res.end(req.user);
+  res.redirect('/');
+});
+
+//login fail
+app.get('/login/fail', function(req, res){
+  //res.end(null);
+  res.redirect('/login');
 });
 
 //傳回是否是登入狀態
