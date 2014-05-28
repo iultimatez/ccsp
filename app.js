@@ -37,9 +37,6 @@ passport.use(new FacebookStrategy({
       if (error) {
         console.log(error);
       }
-      /*
-      登入之後會回傳值，前端應該用cookie之類的東西記錄，才能在新增內容的時候填入使用者的objectID
-      */
       var a = JSON.parse(body);
       //console.log(body);
       console.log("b: " + a.FBID);
@@ -56,8 +53,7 @@ function ensureAuthenticated(req, res, next) {
 
 
 passport.serializeUser(function(user, done) {
-  console.log("login");
-  console.log(user);
+  console.log("login with: " + user);
   done(null, user);//user
 });
 
@@ -86,6 +82,7 @@ app.get('/fbcb',
 
 app.post('/find', user.findOne);
 
+//just for testing
 app.get('/secret',
   	function(req, res){
   		if (req.isAuthenticated()) {
@@ -105,9 +102,12 @@ app.get('/logout', function(req, res){
 //傳回是否是登入狀態
 app.get('/isAuthenticated', function(req, res){
   if (req.isAuthenticated()) {
-    res.end("Logged in");
+    /*
+    登入成功後呼叫這個連結，可以取得登入的使用者資訊，前端應該用cookie之類的東西記錄，才能在新增內容的時候填入使用者的objectID
+    */
+    res.end(req.user);
   }else{
-    res.end("Not login yet");
+    res.end(null);
   }
 });
 
