@@ -67,18 +67,18 @@
     	</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<form role="form" name="topic_form">
+				<form role="form" name="topic_form" action="/topic/create" method="POST">
 				  	<div class="form-group">
-				    	<label for="topic_title" name="title">議題名稱</label>
-				    	<input type="text" class="form-control" id="topic_title" placeholder="輸入議題名稱">
+				    	<label for="topic_title" name="Title">議題名稱</label>
+				    	<input type="text" class="form-control" id="topic_title" name="Title" placeholder="輸入議題名稱">
 				  	</div>
 				  	<div class="form-group">
-				    	<label for="topic_content" name="content">議題內容</label>
-				    	<textarea class="form-control" id="topic_content" placeholder="議題內容解釋"></textarea>
+				    	<label for="topic_content" name="Content">議題內容</label>
+				    	<textarea class="form-control" id="topic_content" name="Content" placeholder="議題內容解釋"></textarea>
 				  	</div>
 				  	<div class="form-group">
 				    	<label for="topic_image">議題圖片</label>
-				    	<input type="text" class="form-control" id="topic_image" placeholder="輸入圖片網址">
+				    	<input type="text" class="form-control" id="topic_image" name="Links" placeholder="輸入圖片網址">
 				    	<p class="help-block">請上傳一張議題代表圖片</p>
 				  	</div>
 		  			<button type="submit" class="btn btn-default">Submit</button>

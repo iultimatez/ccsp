@@ -28,9 +28,13 @@ commentInput.on("keyup", function(e){
 // dimensions.topicId = "0";
 // dimensions.dimension.push(dimension);
 
-// var emptyD = $(".isEmpty:first");
 
 // function loadDimension(){
+// 	$.get('/dimension/list', function(data){
+		
+// 	})
+
+// 	var emptyD = $(".isEmpty:first");
 // 	var ul = $(emptyD).find("ul");
 
 // 	$(emptyD).find("p").text(dimension.name);

@@ -12,7 +12,6 @@ exports.list = function(req, res){
 };
 
 exports.create = function(req, res){
-
 	var topic = new Topic(req.body);
 
 	topic.save(function (err, newTopic){
