@@ -12,7 +12,14 @@ exports.list = function(req, res){
 };
 
 exports.create = function(req, res){
-	var topic = new Topic(req.body);
+	var topic = new Topic();
+
+	topic.Title = req.body.Title;
+	topic.Content = req.body.Content;
+	topic.CreatedBy = req.body.CreatedBy;
+	if (req.body.Links != "") {
+		topic.Links = req.body.Links;
+	}
 
 	topic.save(function (err, newTopic){
 		if (err) {
