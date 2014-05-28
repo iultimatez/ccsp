@@ -2,7 +2,9 @@
 
 //add new comment
 var commentTmpl = '<li><span></span></li>',
-	commentInput = $(".comment_input");
+	commentInput = $(".comment_input"),
+	commentInput2 = $(".comment_input2"),
+	commentInput3 = $(".submit_comment");
 var topicID = location.search.slice(1);
 
 commentInput.on("keyup", function(e){
@@ -10,10 +12,12 @@ commentInput.on("keyup", function(e){
 		var input = $(this),
 			ul = input.parents(".aspect_comment").find(".comment_list"),
 			scrollTo;
+		var expand = input.parents(".aspect_comment").find(".comment_list2");
 		var dimensionID = input.parents(".aspect_col").find(".DimensionID").text();
 
 		$(commentTmpl).appendTo(ul).find("span").text(input.val());
-		var modal = input.parents(".aspect_comment").find(".modal-body").find(".comment_list2");
+		$(commentTmpl).appendTo(expand).find("span").text(input.val());
+		var modal = input.parents(".aspect_comment").find(".modal-body").find(".comment_list");
 		$(commentTmpl).appendTo(modal).find("span").text(input.val());
 
 		$.post('/opinion/create', {Op: input.val(), TopicID: topicID, DimensionID: dimensionID});
@@ -22,6 +26,39 @@ commentInput.on("keyup", function(e){
 		scrollTo = ul.find("li:last");
 		ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
 	}
+})
+
+commentInput2.on("keyup", function(e){
+	if(e.which === 13){
+		var input = $(this), ul = input.parents(".aspect_col").find(".aspect_comment").find(".comment_list");
+		var expand = input.parents(".modal-content").find(".comment_list2");
+		var dimensionID = input.parents(".aspect_col").find(".DimensionID").text();
+		
+		$(commentTmpl).appendTo(ul).find("span").text(input.val());
+		$(commentTmpl).appendTo(expand).find("span").text(input.val());
+
+		$.post('/opinion/create', {Op: input.val(), TopicID: topicID, DimensionID: dimensionID});
+
+		scrollTo = ul.find("li:last");
+		ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
+		input.val("");
+	}
+})
+
+commentInput3.on("click", function(e){
+	var input = $(this), ul = input.parents(".aspect_col").find(".aspect_comment").find(".comment_list");
+	var expand = input.parents(".modal-content").find(".comment_list2");
+	var inputValue = $(this).siblings(".col-xs-10").find(".comment_input2");
+	var dimensionID = input.parents(".aspect_col").find(".DimensionID").text();
+	
+	$(commentTmpl).appendTo(ul).find("span").text(inputValue.val());
+	$(commentTmpl).appendTo(expand).find("span").text(inputValue.val());
+
+	$.post('/opinion/create', {Op: inputValue.val(), TopicID: topicID, DimensionID: dimensionID});
+	
+	scrollTo = ul.find("li:last");
+	ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
+	inputValue.val("");
 })
 
 //load topic
@@ -40,7 +77,9 @@ function loadDimension(){
 		data.dimensions.forEach(function(dimension){
 			var emptyD = $(".isEmpty:first");
 			var ul = $(emptyD).find("ul");
+
 			$(emptyD).find("p").text(dimension.Di);
+			$(emptyD).find(".modal-title").text(dimension.Di);
 			while(dimension.Opinions.length > 0){
 				$(commentTmpl).appendTo(ul).find("span").text(dimension.Opinions.pop());
 			}
