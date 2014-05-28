@@ -4,3 +4,9 @@ h1{
 .isEmpty{
 	visibility: hidden;
 }
+.index_event img{
+	max-width: 240px;
+	max-height: 240px;
+	width: 240px;
+	height: 240px;
+}

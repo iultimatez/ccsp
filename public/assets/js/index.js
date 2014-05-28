@@ -19,7 +19,6 @@ function loadTopic(){
 
 			$(emptyD).find("h3").text(topic.Title);
 			$(emptyD).find("img").attr("src", topic.Links);
-			console.log(topic.Links);
 			$(emptyD).find("a").attr("href", "event.html?topicID=" + topic._id);
 
 			$(emptyD).removeClass("isEmpty");
