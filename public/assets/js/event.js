@@ -19,30 +19,30 @@ commentInput.on("keyup", function(e){
 })
 
 //load dimension
-var dimensions = {"topicId": "", "dimension": []};
-var dimension = {"dimensionId": "", "name": "", "comment": []};
+// var dimensions = {"topicId": "", "dimension": []};
+// var dimension = {"dimensionId": "", "name": "", "comment": []};
 
-dimension.dimensionId = "0";
-dimension.name = "TopicName";
-dimension.comment.push("123");
-dimensions.topicId = "0";
-dimensions.dimension.push(dimension);
+// dimension.dimensionId = "0";
+// dimension.name = "TopicName";
+// dimension.comment.push("123");
+// dimensions.topicId = "0";
+// dimensions.dimension.push(dimension);
 
-var emptyD = $(".isEmpty:first");
+// var emptyD = $(".isEmpty:first");
 
-function loadDimension(){
-	var ul = $(emptyD).find("ul");
+// function loadDimension(){
+// 	var ul = $(emptyD).find("ul");
 
-	$(emptyD).find("p").text(dimension.name);
-	$(commentTmpl).appendTo(ul).find("span").text(dimension.comment.pop());
+// 	$(emptyD).find("p").text(dimension.name);
+// 	$(commentTmpl).appendTo(ul).find("span").text(dimension.comment.pop());
 
-	$(emptyD).removeClass("isEmpty");
-}
+// 	$(emptyD).removeClass("isEmpty");
+// }
 
-loadDimension();
+// loadDimension();
 
 //add dimension
-var more = $("#hexagon");
+var more = $(".hexagon");
 
 more.on("click", function(){
 	var emptyD = $(".isEmpty:first");
