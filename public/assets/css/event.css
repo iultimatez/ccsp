@@ -7,7 +7,7 @@ div.aspect_col{
     background-color: white;
 }
 .goast{
-	height: 165px;
+	height: 100%;
 	vertical-align: middle;
 	display: inline-block;
 	color: white;
@@ -18,5 +18,24 @@ div.aspect_col{
 	vertical-align: middle;
 	height: 100%;
 }
+.comment_list{
+	height: 100px;
+	overflow: auto;
+	word-wrap: break-word;
+	word-break: normal;
+}
+.isEmpty{
+	visibility: hidden;
+}
+.aspect_title input{
+	display: none;
+}
+.is-editing .aspect_title input{
+	display: block;
+}
+.is-editing .comment_input{
+	display: none;
+}
 .comment_input{
+	display: block;
 }
