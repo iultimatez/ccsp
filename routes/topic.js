@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Topic = mongoose.model('Topic');
 
 exports.list = function(req, res){
-	Topic.find(function (err, topics, count){
+	Topic.find().populate('CreatedBy').exec(function (err, topics, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -26,7 +26,7 @@ exports.create = function(req, res){
 
 
 exports.show = function(req, res){
-	Topic.findById(req.query.id,function (err, topic){
+	Topic.findById(req.query.id).populate('CreatedBy').exec(function (err, topic){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -74,7 +74,7 @@ exports.destroy = function(req, res){
 };
 
 exports.search = function(req, res){
-	Topic.find({"Title": new RegExp(req.query.keyword)}, function (err, topics, count){
+	Topic.find({"Title": new RegExp(req.query.keyword)}).populate('CreatedBy').exec( function (err, topics, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);

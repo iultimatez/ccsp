@@ -12,6 +12,8 @@
     "express": "^3.8.0",
     "mongoose": "^3.8.11",
     "node-regexp": "^0.1.1",
+    "passport": "^0.2.0",
+    "passport-facebook": "^1.0.3",
     "request": "^2.36.0"
   }
 }

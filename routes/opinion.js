@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Opinion = mongoose.model('Opinion');
 
 exports.list = function(req, res){
-	Opinion.find(function (err, opinions, count){
+	Opinion.find().populate('CreatedBy').exec(function (err, opinions, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -26,7 +26,7 @@ exports.create = function(req, res){
 
 
 exports.show = function(req, res){
-	Opinion.findById(req.query.id,function (err, opinion){
+	Opinion.findById(req.query.id).populate('CreatedBy').exec(function (err, opinion){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -72,7 +72,7 @@ exports.destroy = function(req, res){
 };
 
 exports.getOpinionByDimensionId = function(req, res){
-	Opinion.find({"DimensionID": req.query.id}, function (err, opinions, count){
+	Opinion.find({"DimensionID": req.query.id}).populate('CreatedBy').exec( function (err, opinions, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
