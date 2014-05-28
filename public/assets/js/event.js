@@ -1,5 +1,5 @@
 (function(){
-	
+
 //add new comment
 var commentTmpl = '<li><span></span></li>',
 	commentInput = $(".comment_input");

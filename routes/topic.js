@@ -19,7 +19,8 @@ exports.create = function(req, res){
 			console.log(err);
 			res.json({error: err.name}, 500);
 		}
-		res.json(newTopic);
+		//res.json(newTopic);
+		res.redirect('/');
 	})
 };
 
