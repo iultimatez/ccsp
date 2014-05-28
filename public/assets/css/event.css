@@ -24,3 +24,18 @@ div.aspect_col{
 	word-wrap: break-word;
 	word-break: normal;
 }
+.isEmpty{
+	visibility: hidden;
+}
+.aspect_title input{
+	display: none;
+}
+.is-editing .aspect_title input{
+	display: block;
+}
+.is-editing .comment_input{
+	display: none;
+}
+.comment_input{
+	display: block;
+}
