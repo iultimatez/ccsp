@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     var aspect = 1;
     function validateForm()
 	{

@@ -92,6 +92,7 @@ function loadDimension(){
 
 loadDimension();
 
+
 //add dimension
 var more = $(".hexagon");
 
