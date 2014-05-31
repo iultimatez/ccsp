@@ -78,7 +78,7 @@ function loadDimension(){
 			var emptyD = $(".isEmpty:first");
 			var ul = $(emptyD).find("ul");
 
-			$(emptyD).find("p").text(dimension.Di);
+			$(emptyD).find(".DimensionTitle").text(dimension.Di);
 			$(emptyD).find(".modal-title").text(dimension.Di);
 			while(dimension.Opinions.length > 0){
 				$(commentTmpl).appendTo(ul).find("span").text(dimension.Opinions.pop());
@@ -107,7 +107,7 @@ more.on("click", function(){
 		if(e.which === 13){
 			var input = $(this);
 			var modal = input.parents(".aspect_col").find(".modal-title");
-			$(aspect).find("p").text(input.val());
+			$(aspect).find(".DimensionTitle").text(input.val());
 			$(aspect).removeClass("is-editing");
 			modal.text(input.val());
 			$.post('/dimension/create', {Di: input.val(), TopicID: topicID});

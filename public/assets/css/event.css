@@ -19,7 +19,7 @@ div.aspect_col{
 	height: 100%;
 }
 .comment_list{
-	height: 100px;
+	height: 80px;
 	overflow: auto;
 	word-wrap: break-word;
 	word-break: normal;
@@ -43,8 +43,11 @@ div.aspect_col{
 	display: none;
 }
 .topic_image img{
-	max-width: 240px;
-	max-height: 240px;
-	width: 240px;
-	height: 240px;
+	max-width: 200px;
+	max-height: 200px;
+	width: 200px;
+	height: 200px;
+}
+.expand{
+	float: right;
 }
