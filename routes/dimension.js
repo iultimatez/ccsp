@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var Dimension = mongoose.model('Dimension');
+var Topic = mongoose.model('Topic');
 
 exports.list = function(req, res){
-	Dimension.find().populate('CreatedBy').exec(function (err, dimensions, count){
+	Dimension.find().populate('CreatedBy').populate('Opinions').exec(function (err, dimensions, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -19,13 +20,34 @@ exports.create = function(req, res){
 			console.log(err);
 			res.json({error: err.name}, 500);
 		}
-		res.json(newDimension);
+
+		Topic.findById(req.body.TopicID).exec(function (err, topic){
+			if (err) {
+				console.log(err);
+				res.json({error: err.name}, 500);
+			}
+
+			topic.Dimensions.push(newDimension._id);
+
+			topic.save(function (err, updatedTopic){
+				if (err) {
+					console.log(err);
+					res.json({error: err.name}, 500);
+				}
+				res.json(newDimension);
+
+			});
+		})
+
+		
 	})
+
+	
 };
 
 
 exports.show = function(req, res){
-	Dimension.findById(req.query.id).populate('CreatedBy').exec(function (err, dimension){
+	Dimension.findById(req.query.id).populate('CreatedBy').populate('Opinions').exec(function (err, dimension){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -59,14 +81,36 @@ exports.destroy = function(req, res){
 			console.log(err);
 			res.json({error: err.name}, 500);
 		}
-
-		dimension.remove(function (err, removeDimension){
+		Topic.findById(dimension.TopicID).exec(function (err, topic){
 			if (err) {
 				console.log(err);
 				res.json({error: err.name}, 500);
 			}
-			res.json(removeDimension);
+			var i = 0;
+			for (i = 0; i < topic.Dimensions.length; i++) {
+				if (topic.Dimensions[i].toString() === dimension._id.toString()) {
+					console.log("found");
+					break;
+				}
+			};
+			topic.Dimensions.splice(i, 1);
+
+			topic.save(function (err, updatedTopic){
+				if (err) {
+					console.log(err);
+					res.json({error: err.name}, 500);
+				}
+				dimension.remove(function (err, removeDimension){
+							if (err) {
+								console.log(err);
+								res.json({error: err.name}, 500);
+							}
+							res.json(removeDimension);
+						})
+
+			});
 		})
+		
 	})
 };
 

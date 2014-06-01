@@ -5,7 +5,7 @@ var OpinionSchema = new Schema({
 	Op: { type: String, required: true },
 	CreatedAt: { type: Date, default: Date.now },
 	CreatedBy: { type: Schema.Types.ObjectId , ref: 'User' },
-	TopicID: { type: Schema.Types.ObjectId , required: true, ref: 'Topic' },
+	TopicID: { type: Schema.Types.ObjectId ,  ref: 'Topic' },
 	DimensionID: { type: Schema.Types.ObjectId , required: true, ref: 'Dimension' },
 	UpdatedAt: { type: Date, default: Date.now }
 });
