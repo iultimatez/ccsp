@@ -31,17 +31,26 @@ passport.use(new FacebookStrategy({
     callbackURL: "/fbcb"
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log("Login success: " + profile.id);
-    var postData = {'FBID': profile.id, 'displayName': profile.displayName, 'gender': profile.gender};
-    request.post({uri:"http://localhost:5000/find", form: postData}, function(error, response, body){
-      if (error) {
-        console.log(error);
-      }
-      var a = JSON.parse(body);
-      //console.log(body);
-      console.log("b: " + a.FBID);
-      done(null, body);
-    });
+    // console.log("Login success: " + profile.id);
+    // var postData = {'FBID': profile.id, 'displayName': profile.displayName, 'gender': profile.gender};
+    // request.post({uri:"http://localhost:5000/find", form: postData}, function(error, response, body){
+    //   if (error) {
+    //     console.log(error);
+    //   }
+    //   var a = JSON.parse(body);
+    //   //console.log(body);
+    //   console.log("b: " + a.FBID);
+    //   done(null, body);
+    // });
+  var postData = {'FBID': profile.id, 'displayName': profile.displayName, 'gender': profile.gender};
+  user.findOne({'FBID': profile.id}, postData, function(err, user){
+    if (err) {
+         console.log(error);
+    }
+    var a = JSON.parse(user);
+    console.log(a);
+    done(null, user);
+  });
   }
 ));
 
@@ -86,7 +95,7 @@ app.get('/fbcb',
                                       failureRedirect: '/login/fail' }));
 
 
-app.post('/find', user.findOne);
+//app.post('/find', user.findOne);
 
 //just for testing
 app.get('/secret',

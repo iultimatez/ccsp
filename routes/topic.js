@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Topic = mongoose.model('Topic');
 
 exports.list = function(req, res){
-	Topic.find().populate('CreatedBy').exec(function (err, topics, count){
+	Topic.find().populate('CreatedBy').populate('Dimensions').exec(function (err, topics, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
@@ -33,7 +33,7 @@ exports.create = function(req, res){
 
 
 exports.show = function(req, res){
-	Topic.findById(req.query.id).populate('CreatedBy').exec(function (err, topic){
+	Topic.findById(req.query.id).populate('CreatedBy').populate('Dimensions').exec(function (err, topic){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);
