@@ -25,6 +25,8 @@ commentInput.on("keyup", function(e){
 		input.val("");
 		scrollTo = ul.find("li:last");
 		ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
+
+		location.reload();
 	}
 })
 
