@@ -1,3 +1,9 @@
+(function(){
+//Check login
+if(sessionStorage.userStatus == ""){
+	$("#layout").html('<br><br><br><br><center><font size="6">請先登入</font></center>');
+}
+	
 $(document).ready(function() {
 
     var aspect = 1;
@@ -24,3 +30,6 @@ $(document).ready(function() {
 		$(this).before('<div class="form-group"><label for="topic_aspect" name="aspect[]">議題面向'+aspect+'</label><input type="text" class="form-control" id="topic_aspect" placeholder="議題面向"></div>');
 	})
 })
+
+$("#userStatus").attr("value", sessionStorage.userStatus);
+}());

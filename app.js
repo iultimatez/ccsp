@@ -137,7 +137,7 @@ app.get('/isAuthenticated', function(req, res){
     res.end(null);
   }
 });
-
+app.get('/user/show/:id?', user.show);
 /*
 需要驗證使用者的話，就把下面改成
 app.get('/topic/list', ensureAuthenticated, topic.list);
