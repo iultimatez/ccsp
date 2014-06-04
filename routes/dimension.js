@@ -116,7 +116,7 @@ exports.destroy = function(req, res){
 
 
 exports.getDimensionByTopicId = function(req, res){
-	Dimension.find({"TopicID": req.query.id}).populate('CreatedBy').exec( function (err, dimensions, count){
+	Dimension.find({"TopicID": req.query.id}).populate('CreatedBy').populate('Opinions').exec( function (err, dimensions, count){
 		if (err) {
 			console.log(err);
 			res.json({error: err.name}, 500);

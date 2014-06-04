@@ -19,6 +19,7 @@ div.aspect_col{
 	height: 100%;
 }
 .comment_list{
+    margin: 0 0 0 -40px;
 	height: 80px;
 	overflow: auto;
 	word-wrap: break-word;
@@ -50,4 +51,26 @@ div.aspect_col{
 }
 .expand{
 	float: right;
+}
+.opName{
+	font-weight: bold;
+	background: #E2E2E2;
+}
+.DimensionTitle{
+	font-weight: bold;
+	font-size: 18px;
+}
+.aspect_title{
+	height: 30px;
+}
+hr{
+	margin: 0;
+	border-top-color: #000000;
+}
+ul{
+	list-style-type: none;
+}
+.topic-content{
+	word-wrap:break-word;
+	word-break:normal;
 }
