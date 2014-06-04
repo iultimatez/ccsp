@@ -68,7 +68,7 @@ commentInput3.on("click", function(e){
 	
 	// scrollTo = ul.find("li:last");
 	// ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
-	inputValue.val("");
+	input.val("");
 
 	reloadDimension();
 })
