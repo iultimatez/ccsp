@@ -55,7 +55,7 @@ commentInput2.on("keyup", function(e){
 })
 
 commentInput3.on("click", function(e){
-	var input = $(this);
+	var input = $(this).parents('.modal-footer').find('.comment_input2');
 	    // ul = input.parents(".aspect_col").find(".aspect_comment").find(".comment_list");
 	// var expand = input.parents(".modal-content").find(".comment_list2");
 	// var inputValue = $(this).siblings(".col-xs-10").find(".comment_input2");
@@ -64,7 +64,7 @@ commentInput3.on("click", function(e){
 	// $(commentTmpl).appendTo(ul).find("span").text(inputValue.val());
 	// $(commentTmpl).appendTo(expand).find("span").text(inputValue.val());
 
-	$.post('/opinion/create', {Op: inputValue.val(), TopicID: topicID, CreatedBy: sessionStorage.userStatus, DimensionID: dimensionID});
+	$.post('/opinion/create', {Op: input.val(), TopicID: topicID, CreatedBy: sessionStorage.userStatus, DimensionID: dimensionID});
 	
 	// scrollTo = ul.find("li:last");
 	// ul.scrollTop(scrollTo.offset().top - ul.offset().top + ul.scrollTop());
