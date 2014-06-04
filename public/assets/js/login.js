@@ -1,7 +1,7 @@
 (function(){
 
 var loginStatus = $('.navbar-right');
-var loginButton = '<li><a href="http://127.0.0.1.xip.io:5000/auth/facebook">Login</a></li>';
+var loginButton = '<li><a href="/auth/facebook">Login</a></li>';
 var logoutButton = '<li><a href="/logout">Logout</a></li>';
 $.get('/isAuthenticated', function(data){
 	console.log("isAuthenticated: " + data);

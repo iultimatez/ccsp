@@ -60,3 +60,13 @@ exports.findOne = function(req, detail, cb){
 		}
 	});
 }
+
+exports.show = function(req, res){
+	User.findById(req.query.id).exec(function (err, user){
+		if (err) {
+			console.log(err);
+			res.json({error: err.name}, 500);
+		}
+		res.json(user);
+	})
+};

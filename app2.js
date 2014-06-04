@@ -1,7 +1,7 @@
 var http = require('http');
 var express = require('express');
 var app = express();
-
+var port = Number(process.env.PORT || 5000);
 
 app.configure(function() {
   app.use(express.static(__dirname + '/public'));
@@ -22,12 +22,11 @@ var topic = require('./routes/topic');
 var dimension = require('./routes/dimension');
 var opinion = require('./routes/opinion');
 
-
 var FacebookStrategy = require('passport-facebook').Strategy;
 var request = require("request");
 passport.use(new FacebookStrategy({
-    clientID: '240935556101090',
-    clientSecret: 'd935b26669cb812d1d149e9d5b7a6b75',
+    clientID: '1455107821400669',
+    clientSecret: 'b2e869c402d87aa2616b5ff59432f39d',
     callbackURL: "/fbcb"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -137,7 +136,7 @@ app.get('/isAuthenticated', function(req, res){
     res.end(null);
   }
 });
-app.get('/user/show/:id?', user.show);
+
 /*
 需要驗證使用者的話，就把下面改成
 app.get('/topic/list', ensureAuthenticated, topic.list);
@@ -172,4 +171,4 @@ app.post('/opinion/destroy', opinion.destroy);
 //一樣是字面上的意思，傳入一個dimension的objectID，列出所有opinion
 app.get('/opinion/getOpinionByDimensionId/:id?', opinion.getOpinionByDimensionId);
 
-app.listen(5000);
+app.listen(port);
