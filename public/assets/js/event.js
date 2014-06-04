@@ -77,7 +77,7 @@ commentInput3.on("click", function(e){
 function loadTopic(){
 	$.get('/topic/show/?id=' + topicID, function(data){
 		$(".topic_title").find("h1").text(data.Title);
-		$(".topic_content").text(data.Content.replace("char(13)","<br>"));
+		$(".topic_content").text(data.Content.replace(/\n/g,"<br>"));
 		$(".topic_image").find("img").attr("src", data.Links);
 	})
 }
