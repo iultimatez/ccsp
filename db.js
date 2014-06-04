@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/polygon');
-//mongoose.connect('mongodb://ccsp:ccsppolygon@ds037768.mongolab.com:37768/polygon');
+//mongoose.connect('mongodb://localhost/polygon');
+mongoose.connect('mongodb://ccsp:ccsppolygon@ds037768.mongolab.com:37768/polygon');
 
 mongoose.connection.on('error', function (err) {
 	console.log(err);
